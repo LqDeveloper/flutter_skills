@@ -91,6 +91,17 @@ description: 对 Flutter 项目进行系统性代码分析，生成结构化的 
 - 字体配置（family、weight、style）
 - 资源生成工具（flutter_gen、assets_generator 等）
 
+#### 2.10 页面架构
+- 页面文件组织方式（pages/ / screens/ 目录结构）
+- 页面层级关系（根页面 → Tab 页面 → 子页面 → 弹窗/BottomSheet）
+- 公共页面模式（Scaffold + AppBar 结构、BottomNavigationBar、Drawer、TabBar 等）
+- 页面基类或通用布局封装（BasePage、CommonScaffold 等）
+- 页面间数据传递方式（构造参数、路由参数、共享状态等）
+- 页面生命周期处理（didChangeDependencies、dispose 等）
+- **页面与 Controller/Provider 的绑定方式** — 页面如何获取 Controller/Provider 实例（Get.put/Get.find、Provider.of/context.watch/context.read、Riverpod ref.watch/ref.read 等）
+- **状态更新触发机制** — 数据变化时页面如何重建（Obx/GetBuilder、Consumer/Selector、ref.watch 等），以及更新粒度（整个页面 vs 局部 Widget）
+- **Controller/Provider 的生命周期管理** — Controller 何时创建和销毁（与页面生命周期绑定、全局单例、自动回收等）
+
 ### 3. 内容审查与确认
 
 逐项向用户确认理解是否正确（已分析清楚，只是确认）：
@@ -120,6 +131,16 @@ description: 对 Flutter 项目进行系统性代码分析，生成结构化的 
 
 ## 项目结构
 {目录概览，标注关键目录来源位置}
+
+## 页面架构
+- 页面组织：{pages/ 目录结构}（`lib/pages/`）
+- 层级关系：{根→Tab→子页面→弹窗}
+- 公共模式：{Scaffold/AppBar/NavigationBar 等}（示例 `lib/widgets/...dart:xx`）
+- 基类封装：{BasePage 等}（`lib/base/...dart:xx`）
+- 数据传递：{方式}（示例 `lib/pages/...dart:xx`）
+- 页面绑定：{Controller/Provider 获取方式}（示例 `lib/pages/...dart:xx`）
+- 更新机制：{Obx/Consumer/ref.watch 等及更新粒度}（示例 `lib/pages/...dart:xx`）
+- Controller 生命周期：{创建/销毁策略}（示例 `lib/controllers/...dart:xx`）
 
 ## Assets 资源
 - 注册：{文件/目录列表}（`pubspec.yaml:xx`）
